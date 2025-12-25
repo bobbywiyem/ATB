@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>ATB</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <img
+        src="https://i.ibb.co/LzdVS6GL/ATB-Logo.png"
+        alt="ATB Logo"
+        class="page-logo"
+      />
+      <input type="text" id="search" placeholder="Search Card Name..." />
+
+      <select id="sort">
+        <option value="evo" selected>Sort By Evolution</option>
+        <option value="lp">Sort By Weight</option>
+        <option value="name">Sort By Card Name</option>
+      </select>
+
+      <select id="columns">
+        <option value="5" selected>100%</option>
+        <option value="4">200%</option>
+        <option value="3">300%</option>
+        <option value="2">400%</option>
+        <option value="1">500%</option>
+      </select>
+    </header>
+
+    <main id="card-grid"></main>
+
+    <div id="modal" class="hidden">
+      <div class="modal-backdrop"></div>
+      <img id="modal-image" />
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

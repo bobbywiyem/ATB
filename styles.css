@@ -1,0 +1,87 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #030535;
+  color: white;
+}
+
+header {
+  padding: 10px;
+  display: flex;
+  gap: 10px;
+  background: #050747;
+  position: sticky;
+  top: 0;
+}
+
+.page-logo {
+  max-width: 40px; /* Adjust size as needed */
+  height: auto; }
+  
+/* SEARCH & SELECT CONTAINERS */
+#search, #sort, #columns {
+  padding: 8px 12px;           /* comfortable padding */
+  font-size: 16px;
+  background-color: #333;       /* dark grey container */
+  color: #fff;                  /* white text */
+  border: none;                 /* remove default border */
+  border-radius: 12px;          /* smooth rounded edges */
+  outline: none;                /* remove default focus outline */
+  appearance: none;             /* remove default select arrow styling (for consistency) */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+/* Ensure placeholder text in search input is white */
+#search::placeholder {
+  color: #fff;
+  opacity: 0.7;                 /* slightly lighter for placeholder */
+}
+
+/* Focus effect for better UX */
+#search:focus, #sort:focus, #columns:focus {
+  box-shadow: 0 0 5px rgba(0, 191, 255, 0.8);
+}
+
+#card-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--cols, 5), 1fr);
+  gap: 0px;
+  padding: 0px;
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  display: block;
+  cursor: pointer;
+  border-radius: 15px;
+}
+
+/* MODAL */
+#modal.hidden {
+  display: none;
+}
+
+#modal {
+  position: fixed;
+  inset: 0;
+}
+
+.modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+}
+
+#modal-image {
+  position: relative;
+  display: block;
+  margin: auto;
+  max-width: 90%;
+  max-height: 90%;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 40px;
+  box-shadow: 0 0 20px rgba(0, 191, 255, 0.6);
+}
