@@ -66,11 +66,6 @@ header {
 #modal {
   position: fixed;
   inset: 0;
-  perspective: 1000px; /* Essential for 3D depth */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
 }
 
 .modal-backdrop {
@@ -81,23 +76,12 @@ header {
 
 #modal-image {
   position: relative;
-  max-width: 85%;
-  max-height: 85%;
-  border-radius: 30px;
-  box-shadow: 0 0 30px rgba(0, 191, 255, 0.4);
-  
-  /* Smooth return to center when finger is lifted */
-  transition: transform 0.2s ease-out; 
-  will-change: transform;
-  transform-style: preserve-3d;
-}
-
-/* Optional: Add a subtle shine layer effect */
-#modal-image::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 30px;
-  background: linear-gradient(135deg, rgba(255,255,255,0.3) 0%, transparent 50%);
-  pointer-events: none;
+  display: block;
+  margin: auto;
+  max-width: 90%;
+  max-height: 90%;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 40px;
+  box-shadow: 0 0 20px rgba(0, 191, 255, 0.6);
 }
