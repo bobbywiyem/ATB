@@ -41,6 +41,46 @@ modal.onclick = () => {
   modal.classList.add("hidden");
 };
 
+modalImg.addEventListener("touchmove", (e) => {
+  // Prevent the page from scrolling while moving the card
+  e.preventDefault();
+
+  const touch = e.touches[0];
+  const rect = modalImg.getBoundingClientRect();
+  
+  // Find the center of the card
+  const centerX = rect.left + rect.width / 2;
+  const centerY = rect.top + rect.height / 2;
+
+  // Calculate distance of finger from center (-1 to 1 scale)
+  const percentX = (touch.clientX - centerX) / (rect.width / 2);
+  const percentY = (touch.clientY - centerY) / (rect.height / 2);
+
+  // Set maximum rotation (e.g., 25 degrees)
+  const maxRotation = 25;
+
+  // Apply rotation
+  // Note: Y move rotates around X axis, X move rotates around Y axis
+  const rotateX = -percentY * maxRotation;
+  const rotateY = percentX * maxRotation;
+
+  modalImg.style.transform = `translateY(-0%) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+  modalImg.style.transition = "none"; // Remove transition for instant feedback while moving
+}, { passive: false });
+
+// Reset card position when finger is lifted
+modalImg.addEventListener("touchend", () => {
+  modalImg.style.transition = "transform 0.5s ease"; // Smooth snap back
+  modalImg.style.transform = "rotateX(0deg) rotateY(0deg) scale(1)";
+});
+
+// Update your existing openModal to reset transition
+function openModal(src) {
+  modalImg.src = src;
+  modalImg.style.transform = "rotateX(0deg) rotateY(0deg) scale(1)";
+  modal.classList.remove("hidden");
+}
+
 colSelect.addEventListener("change", (e) => {
   const numCols = e.target.value;
   // This updates the CSS variable directly on the grid element
